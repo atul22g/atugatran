@@ -12,11 +12,23 @@ const Portfolio = () => {
         return new URLSearchParams(useLocation().search);
     };
 
+    const toggleCategory = () => {
+        const btn = document.querySelector('[data-select]')
+        btn.classList.toggle('active')
+    }
+
+    const changeCategory = (text) => {
+        const select = document.querySelector('[data-select-value]');
+        select.innerHTML = text;
+    }
+
     const query = useQuery();
     const category = query.get('category');
 
 
     useEffect(() => {
+        const btn = document.querySelector('[data-select]')
+        btn.classList.toggle('active')
         axios.get('https://atugatranapi.pages.dev/Projects/index.json')
             .then(response => {
                 setProjects(response.data);
@@ -80,12 +92,10 @@ const Portfolio = () => {
 
                 <div className="filter-select-box">
 
-                    <button className="filter-select" data-select>
-
-                        <div className="select-value" data-selecct-value>Select category</div>
-
+                    <button className="filter-select" data-select onClick={() => toggleCategory(category)}>
+                        <div className="select-value" data-select-value>Select category</div>
                         <div className="select-icon">
-                            <i className="fa-solid fa-chevron-up"></i>
+                            <i className="fa-solid fa-chevron-down"></i>
                         </div>
 
                     </button>
@@ -93,19 +103,27 @@ const Portfolio = () => {
                     <ul className="select-list">
 
                         <li className="select-item">
-                            <button data-select-item>All</button>
+                            <NavLink onClick={()=> changeCategory("All")} to='/Portfolio?category=all'>
+                                <button  data-all data-select-btn>All</button>
+                            </NavLink>
                         </li>
 
                         <li className="select-item">
-                            <button className='active' data-select-item>Web design</button>
+                            <NavLink  onClick={()=> changeCategory("Web design")} to='/Portfolio?category=web-design'>
+                                <button data-web-design data-select-item>Web design</button>
+                            </NavLink>
                         </li>
 
                         <li className="select-item">
-                            <button data-select-item>Applications</button>
+                            <NavLink onClick={()=> changeCategory("Applications")} to='/Portfolio?category=application'>
+                                <button data-application data-select-item>Applications</button>
+                            </NavLink>
                         </li>
 
                         <li className="select-item">
-                            <button data-select-item>Web development</button>
+                            <NavLink onClick={()=> changeCategory("Web development")} to='/Portfolio?category=web-developmenmt'>
+                                <button data-web-developmenmt data-select-item>Web development</button>
+                            </NavLink>
                         </li>
 
                     </ul>

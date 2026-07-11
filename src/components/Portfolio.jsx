@@ -29,21 +29,21 @@ const Portfolio = () => {
     useEffect(() => {
         const btn = document.querySelector('[data-select]')
         btn.classList.toggle('active')
-        axios.get('https://atugatranapi.pages.dev/Projects/index.json')
+        axios.get('https://atualapis.pages.dev/ProjectsApis/Projects.json')
             .then(response => {
                 setProjects(response.data);
             })
             .catch(error => {
                 console.error('Error fetching the projects:', error);
             });
-        axios.get('https://atugatranapi.pages.dev/backend/index.json')
+        axios.get('https://atualapis.pages.dev/ProjectsApis/Backend.json')
             .then(response => {
                 setBackend(response.data);
             })
             .catch(error => {
                 console.error('Error fetching the projects:', error);
             });
-        axios.get('https://atugatranapi.pages.dev/App/index.json')
+        axios.get('https://atualapis.pages.dev/ProjectsApis/App.json')
             .then(response => {
                 setApplication(response.data);
             })

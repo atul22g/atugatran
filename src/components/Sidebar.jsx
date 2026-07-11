@@ -80,14 +80,8 @@ const Sidebar = () => {
 
                 <ul className="social-list">
                     <li className="social-item">
-                        <a href="https://github.com/Atugatran" className="social-link">
+                        <a href="https://github.com/atual-dev" className="social-link">
                             <i className="fa-brands fa-github"></i>
-                        </a>
-                    </li>
-
-                    <li className="social-item">
-                        <a href="https://www.instagram.com/atul857086/" className="social-link">
-                            <i className="fa-brands fa-instagram"></i>
                         </a>
                     </li>
                 </ul>
